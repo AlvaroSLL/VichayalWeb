@@ -1,0 +1,127 @@
+﻿
+@{
+    ViewBag.Title = "Estudiantes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<ol class="breadcrumb mb-4 mt-4">
+    <li class="breadcrumb-item"><a href="index.html">Resumen</a></li>
+    <li class="breadcrumb-item active">Estudiantes</li>
+</ol>
+
+<div class="card">
+
+    <div class="card-header">
+        <i class="fas fa-users me-1"></i> Lista de Estudiantes
+    </div>
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12">
+                <button type="button" class="btn btn-success" onclick="abrirmodal()">Crear Nuevo</button>
+
+            </div>
+
+        </div>
+        <hr />
+
+        <table id="tablaestudiante" class="display cell-border" style="width:100%">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>DNI</th>
+                    <th>NOMBRES</th>
+                    <th>APELLIDOS</th>
+                    <th>FECHA</th>
+                    <th>DIRECCIÓN</th>
+                    <th></th>
+
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+
+
+        </table>
+
+    </div>
+
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="FormModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-dark text-white">
+                <h5 class="modal-title" id="exampleModalLabel">Registrar Estudiante</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+
+    <script>
+
+        var tabladata;
+
+        jQuery.ajax({
+            url: '@Url.Action("ListarEstudiante","Mantenimiento")',
+            type: "GET",
+            datatype: "json",
+            contentType: "aplication/json; charset=utf-8",
+            success: function (data) {
+                debugger;
+                console.log(data)
+            }
+        })
+
+        tabladata = $("#tablaestudiante").DataTable({
+            responsive: true,
+            ordering: false,
+            "ajax": {
+                url: '@Url.Action("ListarEstudiante","Mantenimiento")',
+                type: "GET",
+                datatype: "json"
+            },
+            "columns": [
+                { "data": "ESTUDIANTE_ID" },
+                { "data": "EST_DNI" },
+                { "data": "EST_NOMBRES" },
+                { "data": "EST_APELLIDOS" },
+                { "data": "EST_FECHA" },
+                { "data": "EST_DIRECCION" },
+                {
+                    "defaultContent": '<button type="button" class="btn btn-primary btn-sm"><i class="fas fa-pen"></i></button>'+
+                        '<button type="button" class="btn btn-danger btn-sm ms-2"><i class="fas fa-trash"></i></button>',
+                    "orderable": false,
+                    "width": "90px"
+
+                }
+            ],
+
+            "language": {
+                "url": "https://cdn.datatables.net/plug-ins/1.13.1/i18n/es-MX.json"
+                }
+        });
+
+
+        function abrirmodal() {
+            $("#FormModal").modal("show");
+        }
+
+
+
+    </script>
+
+}
