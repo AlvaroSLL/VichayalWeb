@@ -1,0 +1,6 @@
+D:\TLP_VICHAYAL\Vichayal Web\Capa Modelo\bin\Debug\Capa Modelo.dll
+D:\TLP_VICHAYAL\Vichayal Web\Capa Modelo\bin\Debug\Capa Modelo.pdb
+D:\TLP_VICHAYAL\Vichayal Web\Capa Modelo\obj\Debug\Capa Modelo.csproj.AssemblyReference.cache
+D:\TLP_VICHAYAL\Vichayal Web\Capa Modelo\obj\Debug\Capa Modelo.csproj.CoreCompileInputs.cache
+D:\TLP_VICHAYAL\Vichayal Web\Capa Modelo\obj\Debug\Capa Modelo.dll
+D:\TLP_VICHAYAL\Vichayal Web\Capa Modelo\obj\Debug\Capa Modelo.pdb
